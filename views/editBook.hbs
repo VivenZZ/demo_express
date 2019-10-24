@@ -1,0 +1,9 @@
+<div>{{title}}</div>
+<form action="/editBook" method="post">
+    <input type="hidden" name="id" value="{{book.id}}">
+    名称: <input type="text" name="name" value="{{book.name}}"><br>
+    作者: <input type="text" name="author" value="{{book.author}}"><br>
+    分类: <input type="text" name="category" value="{{book.category}}"><br>
+    描述: <input type="text" name="desc" value="{{book.desc}}"><br>
+    <input type="submit" value="提交"><br>
+</form>
