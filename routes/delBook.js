@@ -4,14 +4,11 @@ const path = require('path');
 const fs = require('fs');
 const data = require('../data/data.json');
 /* 添加图书 */
-router.post('/', function(req, res, next) {
-  // 获取表单数据
-  let info = req.body;
-  data.forEach((item)=>{
-    if (item.id === info.id){
-      for(let key in info){
-        item[key] = info[key]
-      }
+router.get('/', function(req, res, next) {
+  let id = req.query.id;
+  data.forEach((item, index)=>{
+    if (id === item.id){
+      data.splice(index, 1);
     }
   });
   // 需要把内存中数据写入文件

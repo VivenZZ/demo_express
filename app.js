@@ -5,14 +5,6 @@ var cookieParser = require('cookie-parser');
 var lessMiddleware = require('less-middleware');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var listRouter = require('./routes/list');
-var toAddBookRouter = require('./routes/toAddBook');
-var addBookRouter = require('./routes/addBook');
-var toEditBookRouter = require('./routes/toEditBook');
-var editBookRouter = require('./routes/editBook');
-
 var app = express();
 
 // view engine setup
@@ -26,13 +18,14 @@ app.use(cookieParser());
 app.use(lessMiddleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/list', listRouter);
-app.use('/toAddBook', toAddBookRouter);
-app.use('/addBook', addBookRouter);
-app.use('/toEditBook', toEditBookRouter);
-app.use('/editBook', editBookRouter);
+app.use('/', require('./routes/index'));
+app.use('/users',  require('./routes/users'));
+app.use('/list',  require('./routes/list'));
+app.use('/toAddBook',  require('./routes/toAddBook'));
+app.use('/addBook',  require('./routes/addBook'));
+app.use('/toEditBook',  require('./routes/toEditBook'));
+app.use('/editBook',  require('./routes/editBook'));
+app.use('/delBook',  require('./routes/delBook'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
