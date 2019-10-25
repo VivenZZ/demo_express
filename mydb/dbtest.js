@@ -41,7 +41,7 @@ const db = require('./db');
 // 查询
 
 let sql = 'select * from book where id=?';
-let data = ['8'];
+let data = ['6'];
 db.base(sql, data, (result)=>{
     console.log('查询成功');
     console.log(result);
