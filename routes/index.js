@@ -1,9 +1,13 @@
 var express = require('express');
 var router = express.Router();
-const data = require('../data/data.json');
+const db =require('../mydb/db');
+// const data = require('../data/data.json');
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', {title:'图书管理系统', list: data});
+  let sql  = 'select * from book';
+  db.base(sql, null, (result)=>{
+    res.render('index', {title:'图书管理系统', list: result});
+  });
 });
 
 module.exports = router;

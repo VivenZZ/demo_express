@@ -1,17 +1,23 @@
 var express = require('express');
 var router = express.Router();
-const data = require('../data/data.json');
+const db =require('../mydb/db');
+// const data = require('../data/data.json');
 /* 编辑图书 */
 router.get('/', function(req, res, next) {
   let id = req.query.id;
   let book = null;
-  data.forEach((item)=>{
-    if (id === item.id){
-      book = item;
-      return;
-    }
+  let sql = 'select * from book where id=?';
+  let data = [id];
+  db.base(sql, data, (result)=>{
+    res.render('editBook',{title:'编辑图书', book: result[0]});
   });
-  res.render('editBook',{title:'编辑图书', book});
+  // data.forEach((item)=>{
+  //   if (id === item.id){
+  //     book = item;
+  //     return;
+  //   }
+  // });
+  // res.render('editBook',{title:'编辑图书', book});
 });
 
 module.exports = router;
