@@ -28,6 +28,7 @@ app.use('/editBook',  require('./routes/editBook'));
 app.use('/delBook',  require('./routes/delBook'));
 app.use('/login',  require('./routes/login'));
 app.use('/checklogin',  require('./routes/checklogin'));
+app.use('/testApi/allBooks',  require('./routes/testApi/allBooks'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
