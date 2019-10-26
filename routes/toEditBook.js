@@ -9,7 +9,8 @@ router.get('/', function(req, res, next) {
   let sql = 'select * from book where id=?';
   let data = [id];
   db.base(sql, data, (result)=>{
-    res.render('editBook',{title:'编辑图书', book: result[0]});
+    // res.render('editBook',{title:'编辑图书', book: result[0]});
+    res.json({title:'编辑图书', result: result[0]})
   });
   // data.forEach((item)=>{
   //   if (id === item.id){

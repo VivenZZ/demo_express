@@ -4,8 +4,8 @@ const db =require('../mydb/db');
 // const path = require('path');
 // const fs = require('fs');
 // const data = require('../data/data.json');
-/* 添加图书 */
-router.post('/', function(req, res, next) {
+/* 修改 */
+router.put('/', function(req, res, next) {
   // 获取表单数据
   let info = req.body;
   let sql = 'update book set name=?,author=?,category=?,description=? where id=?';
@@ -13,8 +13,10 @@ router.post('/', function(req, res, next) {
   db.base(sql, data, (result)=>{
     if (result.affectedRows == 1) {
       console.log('修改成功');
-      res.redirect('/');
+      // res.redirect('/');
+      res.json({flag: 1});
     } else{
+      res.json({flag: 2});
       console.log('修改失败');
     }
   });

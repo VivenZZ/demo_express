@@ -20,13 +20,12 @@ router.post('/', function(req, res, next) {
   for(let key in info) {
     book[key] = info[key];
   }
-  let sql = 'insert into book set ?'
+  let sql = 'insert into book set ?';
   db.base(sql, book, (result)=>{
     if (result.affectedRows == 1) {
-      console.log('插入成功');
-      res.redirect('/');
+      res.json({flag: 1});
     } else {
-      console.log('插入失败');
+      res.json({flag: 2});
     }
   });
   // book.id = (maxBookCode() + 1).toString();

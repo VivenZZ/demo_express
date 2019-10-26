@@ -6,7 +6,8 @@ const db =require('../mydb/db');
 router.get('/', function(req, res, next) {
   let sql  = 'select * from book';
   db.base(sql, null, (result)=>{
-    res.render('index', {title:'图书管理系统', list: result});
+    // res.render('index', {title:'图书管理系统', list: result});
+      res.json({'title':'图书管理系统',result});
   });
 });
 

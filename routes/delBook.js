@@ -5,15 +5,17 @@ const db =require('../mydb/db');
 // const fs = require('fs');
 // const data = require('../data/data.json');
 /* 添加图书 */
-router.get('/', function(req, res, next) {
+router.delete('/', function(req, res, next) {
   let id = req.query.id;
   let sql = 'delete from book where id=?';
   let data = [id];
   db.base(sql, data, (result)=>{
     if (result.affectedRows == 1) {
       console.log('删除成功');
-      res.redirect('/');
-    } else {
+      // res.redirect('/');
+      res.json({flag: 1});
+    } else{
+      res.json({flag: 2});
       console.log('删除失败');
     }
   });
