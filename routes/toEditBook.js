@@ -5,6 +5,7 @@ const db =require('../mydb/db');
 /* 编辑图书 */
 router.get('/', function(req, res, next) {
   let id = req.query.id;
+  console.log(id)
   let book = null;
   let sql = 'select * from book where id=?';
   let data = [id];
